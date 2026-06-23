@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { CatalogCategoriesGrid } from "./CatalogCategoriesGrid/index";
+import { AboutTech } from "@layouts/AboutTech/index";
 
 const DATA = ref([
   {
@@ -100,6 +101,7 @@ const DATA = ref([
     <h2 class="section__title">Каталог</h2>
     <hr>
     <CatalogCategoriesGrid :categoriesData="DATA" />
+    <AboutTech />
   </section>
 </template>
 

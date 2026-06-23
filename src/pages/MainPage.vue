@@ -1,5 +1,5 @@
 <script setup>
-import CatalogCategories from "@layouts/CatalogCategories/CatalogCategories.vue";
+import { CatalogCategories } from "@layouts/CatalogCategories/index";
 </script>
 
 <template>
