@@ -50,6 +50,12 @@ defineProps(['price', 'old_price', 'productName', 'feedbackQty', 'inStock', 'pro
   flex-direction: column;
   width: 378px;
   height: 529px;
+  transition: var(--transition);
+
+  &:is(:hover, :focus) {
+    cursor: pointer;
+    box-shadow: 0 0 25px -1px #0000001f;
+  }
 }
 
 .badges {

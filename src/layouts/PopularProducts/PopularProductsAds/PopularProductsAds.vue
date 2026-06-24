@@ -14,6 +14,7 @@
 
 <style scoped>
   .popular-products__ads-background {
+    margin-top: 48px;
     border-radius: 5px;
     background-color: #142840;
     color: white;
