@@ -4,19 +4,31 @@ import { HeaderCategories } from './HeaderCategories';
 import { Search } from "./Search";
 import { Cart } from "./Cart";
 import { Dropdown } from "./Dropdown";
+import { CartDropdown } from "./CartDropdown";
 import { Navbar } from "./Navbar";
 
 import ButtonLg from "@components/Button/ButtonLg.vue";
 import Logo from "@components/Logo/Logo.vue";
 
 const isCabinetMenuOpen = ref(false)
+const isCartMenuOpen = ref(false)
 
 const toggleCabinetMenu = () => {
   isCabinetMenuOpen.value = !isCabinetMenuOpen.value
+  isCartMenuOpen.value = false
+}
+
+const toggleCartMenu = () => {
+  isCartMenuOpen.value = !isCartMenuOpen.value
+  isCabinetMenuOpen.value = false
 }
 
 const closeCabinetMenu = () => {
   isCabinetMenuOpen.value = false
+}
+
+const closeCartMenu = () => {
+  isCartMenuOpen.value = false
 }
 </script>
 
@@ -36,7 +48,7 @@ const closeCabinetMenu = () => {
             </div>
             <span>+7(495)150-95-55</span>
           </div>
-          <div class="header__top-cabinet" @click="toggleCabinetMenu">
+          <div class="header__top-cabinet" @click.stop="toggleCabinetMenu">
             <div class="flex flex-center"><img src="/icons/cabinet-icon.svg" alt="cabinet"></div>
             <span>Личный кабинет</span>
 
@@ -50,7 +62,11 @@ const closeCabinetMenu = () => {
         <ButtonLg text="Все категории" />
         <HeaderCategories />
         <Search />
-        <Cart />
+
+        <div class="cart__wrapper" @click.stop="toggleCartMenu">
+          <Cart />
+          <CartDropdown v-if="isCartMenuOpen" @close="closeCartMenu" />
+        </div>
       </div>
       <Navbar />
     </div>
@@ -97,5 +113,10 @@ const closeCabinetMenu = () => {
 .header__top-info-wrapper {
   display: flex;
   gap: 65px;
+}
+
+.cart__wrapper {
+  position: relative;
+  cursor: pointer;
 }
 </style>
